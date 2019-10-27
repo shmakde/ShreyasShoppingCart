@@ -12,8 +12,10 @@ namespace ShreyCart.Common
         public IEnumerable<Product> LoadProducts(string path)
         {
             var csv = new CsvReader(File.OpenText(path));
-            var products = csv.GetRecords<Product>();
+            var products = new List<Product>();
+            var p = new Product() { Description = "Description", Identifier = 1, Name = "Shreyas", Price = 1.00M, Stock = 1 };
 
+            products.Add(p);
             return products.ToList();
         }
     }

@@ -39,5 +39,18 @@ namespace ShreyCart.Service.Controllers
             _basketContext.AddProduct(cartName, productId, quantity);
             return Ok();
         }
+
+        [Route("api/ShreyBasket/Sample/{cartname}/Add/{productId}/{quantity}/{yes}")]
+        [HttpGet]
+        [HttpPut]
+        public IEnumerable<Product> AddProduct(string cartName, int productId, int quantity, int yes)
+        {
+            var products = new List<Product>();
+            var p = new Product() { Description = "Description", Identifier = 1, Name = "Shreyas", Price = 1.00M, Stock = 1 };
+
+            products.Add(p);
+
+            return products;
+        }
     }
 }
