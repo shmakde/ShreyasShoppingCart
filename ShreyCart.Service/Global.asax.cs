@@ -20,6 +20,7 @@ namespace ShreyCart.Service
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             IocConfig.ResolveDependencies();
+            GlobalConfiguration.Configuration.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
         }
     }
 }

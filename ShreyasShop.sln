@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Business", "Shrey
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Domain", "ShreyCart.Domain\ShreyCart.Domain.csproj", "{ADAFF353-8D72-43F4-8111-EF654128829D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.DataAccess", "ShreyCart.DataAccess\ShreyCart.DataAccess.csproj", "{B04F6E22-B8A4-42B8-8CC6-4B44FC089BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.DataAccess.Tests", "ShreyCart.DataAccess.Tests\ShreyCart.DataAccess.Tests.csproj", "{9E20278A-5987-49A3-AA08-F37D9AFAD792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{ADAFF353-8D72-43F4-8111-EF654128829D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADAFF353-8D72-43F4-8111-EF654128829D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADAFF353-8D72-43F4-8111-EF654128829D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B04F6E22-B8A4-42B8-8CC6-4B44FC089BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B04F6E22-B8A4-42B8-8CC6-4B44FC089BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B04F6E22-B8A4-42B8-8CC6-4B44FC089BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B04F6E22-B8A4-42B8-8CC6-4B44FC089BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
