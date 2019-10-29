@@ -2,6 +2,7 @@
 using ShreyCart.Abstractions;
 using ShreyCart.Business;
 using ShreyCart.Common;
+using ShreyCart.DataAccess.Connection;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 
@@ -20,6 +21,7 @@ namespace ShreyCart.Service
             container.Register<IConfig, CartConfig>(Lifestyle.Scoped);
             container.Register<IProductContext, ProductContext>(Lifestyle.Scoped);
             container.Register<IBasketContext, BasketContext>(Lifestyle.Scoped);
+            container.Register<IConnectionSetting, ConnectionSetting>(Lifestyle.Scoped);
 
             // This is an extension method from the integration package.
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);

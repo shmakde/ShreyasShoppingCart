@@ -56,9 +56,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection\IConnectionSetting.cs" />
+    <Compile Include="Connection\ConnectionSetting.cs" />
     <Compile Include="ISqlExecutor.cs" />
+    <Compile Include="StoredProcedure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlExecutor.cs" />
+    <Compile Include="StoredProcedures\ProcAddPersons.cs" />
+    <Compile Include="StoredProcedures\IStoredProcedure.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
