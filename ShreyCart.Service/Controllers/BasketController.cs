@@ -121,7 +121,7 @@ namespace ShreyCart.Service.Controllers
             var emberProductsWithTypeId = new List<EmberProductWithTypeId>();
 
             emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "steel-shopping-cart", type = "products", attributes = emberProducts[0] });
-            emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "wood-shopping-cart", type = "products", attributes = emberProducts[1] });
+            emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "woodden-shopping-cart", type = "products", attributes = emberProducts[1] });
             emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "plastic-shopping-cart", type = "products", attributes = emberProducts[2] });
 
             //HttpContext.Current.Response.Headers.Add("Access-Control-Allow-Origin", "*");
