@@ -82,7 +82,7 @@ namespace ShreyCart.Service.Controllers
         [Route("api/products")]
         [HttpGet]
         [HttpPut]
-        public IEnumerable<EmberProductWithTypeId> GetProducts()
+        public EmberDataWrapper GetProducts()
         {
             var emberProducts = new List<EmberProduct>()
             {
@@ -129,8 +129,9 @@ namespace ShreyCart.Service.Controllers
             //HttpContext.Current.Response.Headers.Add("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token");
             //HttpContext.Current.Response.Headers.Add("Origin", "http://localhost:4200");
 
+            
 
-            return emberProductsWithTypeId;
+            return new EmberDataWrapper { data = emberProductsWithTypeId };
         }
     }
 }
