@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EmberDataWrapper.cs" />
     <Compile Include="EmberProduct.cs" />
     <Compile Include="EmberProductWithTypeId.cs" />
     <Compile Include="Product.cs" />
