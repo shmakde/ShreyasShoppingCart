@@ -28,7 +28,7 @@ namespace ShreyCart.DataAccess.StoredProcedures
         {
             var procParameters = new Dictionary<string, object>();
 
-            procParameters.Add("@Title", usersId);
+            procParameters.Add("@ProductId", productId);
             procParameters.Add("@UserId", usersId);
 
             storedProcedureName = "dbo.DeleteProduct";
