@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Web;
 using System.Web.Http;
 using ShreyCart.Abstractions;
@@ -84,52 +85,31 @@ namespace ShreyCart.Service.Controllers
         [HttpPut]
         public EmberDataWrapper GetProducts()
         {
-            var emberProducts = new List<EmberProduct>()
-            {
-                new EmberProduct()
-                {
-                    title = "Steel Shopping Cart",
-                    color = "Silver",
-                    supplier = "Walmart",
-                    pricecategory = "High",
-                    price = 1500.5M,
-                    image = "https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg",
-                    description = "This is a steel shopping cart used for multipurpose stores, with an extended 2-year manufacturer warantee."
-                },
-                new EmberProduct()
-                {
-                    title = "Steel Shopping Cart",
-                    color = "Silver",
-                    supplier = "Walmart",
-                    pricecategory = "High",
-                    price = 1500.5M,
-                    image = "https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg",
-                    description = "This is a steel shopping cart used for multipurpose stores, with an extended 2-year manufacturer warantee."
-                },
-                new EmberProduct()
-                {
-                    title = "Steel Shopping Cart",
-                    color = "Silver",
-                    supplier = "Walmart",
-                    pricecategory = "High",
-                    price = 1500.5M,
-                    image = "https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg",
-                    description = "This is a steel shopping cart used for multipurpose stores, with an extended 2-year manufacturer warantee."
-                }
-            };
+            var ProcGetProducts = new GetAllProducts()
+            { parameters = new Dictionary<string, object>(), storedProcedureName = "dbo.GetAllProducts" };
+
+            var rows = new SqlExecutor().ExecuteStoredProcedure(ProcGetProducts, new ConnectionSetting()).Tables[0].Rows;
 
             var emberProductsWithTypeId = new List<EmberProductWithTypeId>();
 
-            emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "steel-shopping-cart", type = "products", attributes = emberProducts[0] });
-            emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "wooden-shopping-cart", type = "products", attributes = emberProducts[1] });
-            emberProductsWithTypeId.Add(new EmberProductWithTypeId() { id = "plastic-shopping-cart", type = "products", attributes = emberProducts[2] });
-
-            //HttpContext.Current.Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            //HttpContext.Current.Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE, OPTIONS");
-            //HttpContext.Current.Response.Headers.Add("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token");
-            //HttpContext.Current.Response.Headers.Add("Origin", "http://localhost:4200");
-
-            
+            foreach (DataRow row in rows)
+            {
+                emberProductsWithTypeId.Add(new EmberProductWithTypeId()
+                {
+                    id = row["title"].ToString().Replace(' ', '-'),
+                    type = "product",
+                    attributes = new EmberProduct()
+                    {
+                        title = row["title"].ToString(),
+                        color = row["color"].ToString(),
+                        supplier = row["suppliername"].ToString(),
+                        pricecategory = row["pricecategory"].ToString(),
+                        price = decimal.Parse(row["price"].ToString()),
+                        image = row["imageurl"].ToString(),
+                        description = row["description"].ToString()
+                    }
+                });
+            }
 
             return new EmberDataWrapper { data = emberProductsWithTypeId };
         }

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ShreyCart.DataAccess.StoredProcedures
 {
-    public class ProcAddPersons : IStoredProcedure
+    public class ProcAddPersons : IStoredProcedureNonQuery
     {
         public string storedProcedureName { get; set; }
         public Dictionary<string, object> parameters { get; set; }

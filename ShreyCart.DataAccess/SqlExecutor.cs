@@ -16,37 +16,6 @@ namespace ShreyCart.DataAccess
         {
 
         }
-        //public TResult[] Execute<TResult>(CommandType commandType, string commandText, IDictionary<string, object> parameters, IDictionary<string, object> outParameters, int? timeout = null) where TResult : class
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public DataTable ExecuteDataTable(CommandType commandType, string commandText, IDictionary<string, object> parameters, IDictionary<string, object> outParameters, int? timeout = null)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-
-        //public void ExecuteNonQuery(CommandType commandType, string commandText, IDictionary<string, object> parameters, IDictionary<string, object> outParameters, int? timeout = null)
-        //{
-        //    using (SqlConnection connection = new SqlConnection(""))
-        //    {
-                
-        //    }
-        //}
-        //public DataSet SelectRows(DataSet dataset,string connectionString, string queryString)
-        //{
-        //    using (SqlConnection connection =
-        //        new SqlConnection(connectionString))
-        //    {
-        //        SqlDataAdapter adapter = new SqlDataAdapter();
-        //        adapter.SelectCommand = new SqlCommand(
-        //            queryString, connection);
-        //        adapter.Fill(dataset);
-        //        return dataset;
-        //    }
-        //}
-
         public void ExecuteNonQuery(string queryString, IConnectionSetting connection)
         {
             using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
@@ -56,7 +25,7 @@ namespace ShreyCart.DataAccess
                 command.ExecuteNonQuery();
             }
         }
-        public void ExecuteStoredProcedure(IStoredProcedure procedure, IConnectionSetting connection)
+        public void ExecuteStoredProcedure(IStoredProcedureNonQuery procedure, IConnectionSetting connection)
         {
             using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
             {
@@ -70,6 +39,21 @@ namespace ShreyCart.DataAccess
                     }
                     con.Open();
                     cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public DataSet ExecuteStoredProcedure(IStoredProcedureQueryWithResults procedure, IConnectionSetting connection)
+        {
+            using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter();
+                using (SqlCommand cmd = new SqlCommand(procedure.storedProcedureName, con))
+                {
+                    var dataset = new DataSet();
+                    adapter.SelectCommand = cmd;
+                    adapter.Fill(dataset);
+                    return dataset;
                 }
             }
         }
