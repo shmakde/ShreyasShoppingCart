@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ShreyCart.DataAccess.StoredProcedures
+﻿using System.Collections.Generic;
+namespace ShreyCart.Abstractions
 {
     public interface IStoredProcedureNonQuery
     {

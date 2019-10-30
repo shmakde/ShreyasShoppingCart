@@ -2,7 +2,7 @@
 using ShreyCart.Abstractions;
 using ShreyCart.Business;
 using ShreyCart.Common;
-using ShreyCart.DataAccess.Connection;
+using ShreyCart.DataAccess;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 

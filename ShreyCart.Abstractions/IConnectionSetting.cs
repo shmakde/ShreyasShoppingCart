@@ -1,4 +1,4 @@
-﻿namespace ShreyCart.DataAccess.Connection
+﻿namespace ShreyCart.Abstractions
 {
     public interface IConnectionSetting
     {

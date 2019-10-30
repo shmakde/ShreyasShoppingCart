@@ -1,8 +1,6 @@
-﻿using ShreyCart.DataAccess.Connection;
-using ShreyCart.DataAccess.StoredProcedures;
-using System.Data;
+﻿using System.Data;
 
-namespace ShreyCart.DataAccess
+namespace ShreyCart.Abstractions
 {
     public interface ISqlExecutor
     {
@@ -10,5 +8,4 @@ namespace ShreyCart.DataAccess
         void ExecuteStoredProcedure(IStoredProcedureNonQuery procedure, IConnectionSetting connection);
         DataSet ExecuteStoredProcedure(IStoredProcedureQueryWithResults procedure, IConnectionSetting connection);
     }
-
 }

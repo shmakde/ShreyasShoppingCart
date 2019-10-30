@@ -1,15 +1,17 @@
-﻿using ShreyCart.DataAccess.Connection;
-using System;
+﻿using ShreyCart.Abstractions;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 
 namespace ShreyCart.DataAccess.StoredProcedures
 {
-    public class GetAllProducts : IStoredProcedureQueryWithResults
+    public class ProcGetAllProducts : IStoredProcedureQueryWithResults
     {
         public string storedProcedureName { get; set; }
+        public ProcGetAllProducts()
+        {
+            storedProcedureName = "dbo.GetAllProducts";
+            parameters = new Dictionary<string, object>();
+        }
         public Dictionary<string, object> parameters { get; set; }
 
         public DataSet Results()

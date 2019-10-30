@@ -54,9 +54,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBasketContext.cs" />
+    <Compile Include="IConnectionSetting.cs" />
     <Compile Include="IDataSource.cs" />
     <Compile Include="IConfig.cs" />
+    <Compile Include="ISqlExecutor.cs" />
+    <Compile Include="IStoredProcedureNonQuery.cs" />
     <Compile Include="IProductContext.cs" />
+    <Compile Include="IStoredProcedureQueryWithResults.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,21 +1,11 @@
-﻿using ShreyCart.DataAccess.Connection;
-using ShreyCart.DataAccess.StoredProcedures;
-using System;
-using System.Collections.Generic;
+﻿using ShreyCart.Abstractions;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace ShreyCart.DataAccess
 {
     public class SqlExecutor : ISqlExecutor
     {
-        public SqlExecutor()
-        {
-
-        }
         public void ExecuteNonQuery(string queryString, IConnectionSetting connection)
         {
             using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
@@ -25,6 +15,7 @@ namespace ShreyCart.DataAccess
                 command.ExecuteNonQuery();
             }
         }
+
         public void ExecuteStoredProcedure(IStoredProcedureNonQuery procedure, IConnectionSetting connection)
         {
             using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
