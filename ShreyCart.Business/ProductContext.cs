@@ -87,8 +87,8 @@ namespace ShreyCart.Business
 
         public void DeleteProduct(int ProductId)
         {
-            var ProcAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
-                .WithProductId(ProductId).
+            var ProcAddNewPerson = new ProcDeleteProduct(CurrentSessionUserId)
+                .WithProductId(ProductId)
                 .Build();
 
             new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, new ConnectionSetting());

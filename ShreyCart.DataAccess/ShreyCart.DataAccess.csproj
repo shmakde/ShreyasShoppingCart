@@ -60,7 +60,8 @@
     <Compile Include="StoredProcedure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlExecutor.cs" />
-    <Compile Include="StoredProcedures\GetAllProducts.cs" />
+    <Compile Include="StoredProcedures\ProcDeleteProduct.cs" />
+    <Compile Include="StoredProcedures\ProcGetAllProducts.cs" />
     <Compile Include="StoredProcedures\ProcAddNewProduct.cs" />
   </ItemGroup>
   <ItemGroup>
