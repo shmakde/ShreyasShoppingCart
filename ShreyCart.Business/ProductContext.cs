@@ -26,7 +26,8 @@ namespace ShreyCart.Business
 
         public EmberDataWrapper GetAllProducts()
         {
-            var ProcGetProducts = new ProcGetAllProducts();
+            var ProcGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
+                .Build();
 
             var dataSet = new SqlExecutor().ExecuteStoredProcedure(ProcGetProducts, new ConnectionSetting());
 

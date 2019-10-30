@@ -56,6 +56,7 @@ namespace ShreyCart.DataAccess.StoredProcedures
             procParameters.Add("@SupplierName", suppliername);
             procParameters.Add("@Price", price);
             procParameters.Add("@ImageURL", imageHost + imagename + jpgType);
+            procParameters.Add("@UserId", userid);
 
             storedProcedureName = "dbo.AddNewProduct";
 

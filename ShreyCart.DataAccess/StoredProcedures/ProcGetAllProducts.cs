@@ -7,10 +7,10 @@ namespace ShreyCart.DataAccess.StoredProcedures
     public class ProcGetAllProducts : IStoredProcedureQueryWithResults
     {
         public string storedProcedureName { get; set; }
-        public ProcGetAllProducts()
+        private int userId { get; set; }
+        public ProcGetAllProducts(int UserId)
         {
-            storedProcedureName = "dbo.GetAllProducts";
-            parameters = new Dictionary<string, object>();
+            userId = UserId;
         }
         public Dictionary<string, object> parameters { get; set; }
 
@@ -18,5 +18,17 @@ namespace ShreyCart.DataAccess.StoredProcedures
         {
             return new SqlExecutor().ExecuteStoredProcedure(this, new ConnectionSetting());
         }
+
+        public ProcGetAllProducts Build()
+        {
+            var procParameters = new Dictionary<string, object>();
+
+            procParameters.Add("@UserId", userId);
+
+            storedProcedureName = "dbo.GetAllProducts";
+            parameters = procParameters;
+            return this;
+        }
+        private ProcGetAllProducts() { }
     }
 }
