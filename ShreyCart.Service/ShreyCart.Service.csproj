@@ -276,10 +276,6 @@
       <Project>{b19559cd-c0f9-42d2-b469-54df339c9b52}</Project>
       <Name>ShreyCart.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShreyCart.Common\ShreyCart.Common.csproj">
-      <Project>{0FB55916-3618-47BC-96CA-884F53F6CCF4}</Project>
-      <Name>ShreyCart.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ShreyCart.DataAccess\ShreyCart.DataAccess.csproj">
       <Project>{b04f6e22-b8a4-42b8-8cc6-4b44fc089bb6}</Project>
       <Name>ShreyCart.DataAccess</Name>

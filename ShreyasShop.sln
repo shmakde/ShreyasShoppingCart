@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Service", "ShreyC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Service.Tests", "ShreyCart.Service.Tests\ShreyCart.Service.Tests.csproj", "{F3722445-F890-46B4-A85D-C7C3AC43E0B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Common", "ShreyCart.Common\ShreyCart.Common.csproj", "{0FB55916-3618-47BC-96CA-884F53F6CCF4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Abstractions", "ShreyCart.Abstractions\ShreyCart.Abstractions.csproj", "{71971DD8-6DAD-480E-B59E-99A9DB192ACD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Business", "ShreyCart.Business\ShreyCart.Business.csproj", "{B19559CD-C0F9-42D2-B469-54DF339C9B52}"
@@ -33,10 +31,6 @@ Global
 		{F3722445-F890-46B4-A85D-C7C3AC43E0B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3722445-F890-46B4-A85D-C7C3AC43E0B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3722445-F890-46B4-A85D-C7C3AC43E0B3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0FB55916-3618-47BC-96CA-884F53F6CCF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0FB55916-3618-47BC-96CA-884F53F6CCF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0FB55916-3618-47BC-96CA-884F53F6CCF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0FB55916-3618-47BC-96CA-884F53F6CCF4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71971DD8-6DAD-480E-B59E-99A9DB192ACD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71971DD8-6DAD-480E-B59E-99A9DB192ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71971DD8-6DAD-480E-B59E-99A9DB192ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -1,7 +1,6 @@
 ﻿using ShreyCart.Abstractions;
 using ShreyCart.Domain;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace ShreyCart.Business
 {
@@ -17,70 +16,25 @@ namespace ShreyCart.Business
             _productContext = productContext;
         }
 
-        public void AddProduct(string cartName, int productId, int quantity)
+        public void AddProductToCart(string cartName, int productId, int quantity)
         {
-            var availableProduct = this._productContext.GetProducts().FirstOrDefault(x => x.Identifier == productId);
-            if (quantity > availableProduct?.Stock)
-                return;
-
-            if (this.Baskets.ContainsKey(cartName))
-            {
-                var existingProduct = this.Baskets[cartName].FirstOrDefault(x => x.Identifier == productId);
-
-                if (existingProduct != null)
-                {
-                    this.Baskets[cartName].Remove(existingProduct);
-                    quantity += existingProduct.Stock;
-                }
-                if (availableProduct == null) return;
-                Product cartProduct = CreateCartProduct(availableProduct, quantity);
-                this.Baskets[cartName].Add(cartProduct);
-            }
-            else
-            {
-                Product cartProduct = CreateCartProduct(availableProduct, quantity);
-                this.Baskets.Add(cartName, new List<Product> { cartProduct });
-            }
+            throw new System.NotImplementedException();
         }
 
         public void Checkout(string cartName)
         {
-            if (!this.Baskets.ContainsKey(cartName))
-                return;
-
-            var shoppingBasket = this.Baskets[cartName];
-
-            if (!CanCheckout(shoppingBasket))
-                return;
-
-            UpdateQuantities(shoppingBasket);
-
-            ClearShoppingCart(cartName);
+            throw new System.NotImplementedException();
         }
 
 
         private bool CanCheckout(List<Product> shoppingBasket)
         {
-            foreach (var cartProduct in shoppingBasket)
-            {
-                var realProduct = _productContext.GetProducts().FirstOrDefault(x => x.Identifier == cartProduct.Identifier);
-                if (realProduct == null)
-                    return false;
-
-                if (realProduct.Stock < cartProduct.Stock)
-                    return false;
-            }
-            return true;
+            throw new System.NotImplementedException();
         }
 
         private void UpdateQuantities(List<Product> shoppingBasket)
         {
-            foreach (var cartProduct in shoppingBasket)
-            {
-                var realProduct =
-                    _productContext.GetProducts().FirstOrDefault(x => x.Identifier == cartProduct.Identifier);
-                if (realProduct != null) realProduct.Stock -= cartProduct.Stock;
-            }
+            throw new System.NotImplementedException();
         }
 
         private void ClearShoppingCart(string cartName)
@@ -90,21 +44,12 @@ namespace ShreyCart.Business
 
         private Product CreateCartProduct(Product product, int quantity)
         {
-            //TODO: use an object clone technique -- Automapper maybe
-            Product cartProduct = new Product
-            {
-                Stock = quantity,
-                Description = product.Description,
-                Identifier = product.Identifier,
-                Name = product.Name,
-                Price = product.Price
-            };
-            return cartProduct;
+            throw new System.NotImplementedException();
         }
 
         public List<Product> GetCart(string cartName)
         {
-            return !this.Baskets.ContainsKey(cartName) ? null : this.Baskets[cartName];
+            throw new System.NotImplementedException();
         }
     }
 }

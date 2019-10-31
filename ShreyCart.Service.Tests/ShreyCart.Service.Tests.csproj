@@ -142,10 +142,6 @@
       <Project>{b19559cd-c0f9-42d2-b469-54df339c9b52}</Project>
       <Name>ShreyCart.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShreyCart.Common\ShreyCart.Common.csproj">
-      <Project>{0fb55916-3618-47bc-96ca-884f53f6ccf4}</Project>
-      <Name>ShreyCart.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ShreyCart.Domain\ShreyCart.Domain.csproj">
       <Project>{adaff353-8d72-43f4-8111-ef654128829d}</Project>
       <Name>ShreyCart.Domain</Name>

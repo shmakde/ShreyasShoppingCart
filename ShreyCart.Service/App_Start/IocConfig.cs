@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using ShreyCart.Abstractions;
 using ShreyCart.Business;
-using ShreyCart.Common;
 using ShreyCart.DataAccess;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
@@ -17,7 +16,6 @@ namespace ShreyCart.Service
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
 
             // Register your types, for instance using the scoped lifestyle:
-            container.Register<IDataSource, CsvDataSource>(Lifestyle.Scoped);
             container.Register<IConnectionSetting, ConnectionSetting>(Lifestyle.Scoped);
             container.Register<IProductContext, ProductContext>(Lifestyle.Scoped);
             container.Register<IBasketContext, BasketContext>(Lifestyle.Scoped);

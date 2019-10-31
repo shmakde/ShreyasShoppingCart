@@ -9,17 +9,12 @@ namespace ShreyCart.Business
 {
     public class ProductContext : IProductContext
     {
-        private static IEnumerable<Product> _products;
-
-        private readonly IDataSource _dataSource;
         private readonly IConnectionSetting _connectionSetting;
-        private readonly IConfig _config;
         const int CurrentSessionUserId = 1;
         public ProductContext(IConnectionSetting connectionSetting)
         {
             _connectionSetting = connectionSetting;
         }
-
         public EmberDataWrapper GetAllProducts()
         {
             var ProcGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
@@ -39,7 +34,7 @@ namespace ShreyCart.Business
                 {
                     id = row["title"].ToString().Replace(' ', '-'),
                     type = "product",
-                    attributes = new EmberProduct()
+                    attributes = new Product()
                     {
                         title = row["title"].ToString(),
                         color = row["color"].ToString(),
@@ -53,11 +48,7 @@ namespace ShreyCart.Business
             }
             return emberProductsWithTypeId;
         }
-        public IEnumerable<Product> GetProducts()
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public void AddNewProduct(string title, string color, string suppliername, double price, string imageName)
         {
             var ProcAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
@@ -70,7 +61,7 @@ namespace ShreyCart.Business
             new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
         }
 
-        public void AddNewProduct(EmberProduct emberProduct)
+        public void AddNewProduct(Product emberProduct)
         {
             var ProcAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
                 .WithTitle(emberProduct.title)
