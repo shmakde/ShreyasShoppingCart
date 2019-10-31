@@ -1,6 +1,8 @@
-﻿using ShreyCart.Abstractions;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Data;
 using System.Data.SqlClient;
+using ShreyCart.Abstractions;
 
 namespace ShreyCart.DataAccess
 {
@@ -20,14 +22,15 @@ namespace ShreyCart.DataAccess
         {
             using (SqlConnection connection = new SqlConnection(connectionSetting.GetDataSourcePath()))
             {
-                using (SqlCommand command = new SqlCommand(procedure.storedProcedureName, connection))
+                using (SqlCommand command = new SqlCommand(procedure.StoredProcedureName, connection))
                 {
                     command.CommandType = CommandType.StoredProcedure;
 
-                    foreach(var parameter in procedure.parameters)
+                    foreach (var parameter in procedure.Parameters)
                     {
                         command.Parameters.AddWithValue(parameter.Key, parameter.Value);
                     }
+
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
@@ -39,11 +42,12 @@ namespace ShreyCart.DataAccess
             DataSet dataset = new DataSet();
             using (SqlConnection con = new SqlConnection(connectionSetting.GetDataSourcePath()))
             {
-                SqlCommand command = new SqlCommand(procedure.storedProcedureName, con);
-                foreach (var parameter in procedure.parameters)
+                SqlCommand command = new SqlCommand(procedure.StoredProcedureName, con);
+                foreach (var parameter in procedure.Parameters)
                 {
                     command.Parameters.AddWithValue(parameter.Key, parameter.Value);
                 }
+
                 command.CommandType = CommandType.StoredProcedure;
 
                 SqlDataAdapter da = new SqlDataAdapter();

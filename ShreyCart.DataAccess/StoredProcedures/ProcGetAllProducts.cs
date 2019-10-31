@@ -1,28 +1,35 @@
-﻿using ShreyCart.Abstractions;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
+using ShreyCart.Abstractions;
 
 namespace ShreyCart.DataAccess.StoredProcedures
 {
     public class ProcGetAllProducts : IStoredProcedureQueryWithResults
     {
-        public string storedProcedureName { get; set; }
-        private int userId { get; set; }
-        public ProcGetAllProducts(int UserId)
+        private int userid;
+
+        public ProcGetAllProducts(int userid)
         {
-            userId = UserId;
+            userid = this.userid;
         }
-        public Dictionary<string, object> parameters { get; set; }
+
+        private ProcGetAllProducts()
+        {
+        }
+
+        public string StoredProcedureName { get; set; }
+
+        public Dictionary<string, object> Parameters { get; set; }
 
         public ProcGetAllProducts Build()
         {
             var procParameters = new Dictionary<string, object>();
-            procParameters.Add("@UserId", userId);
-            parameters = procParameters;
+            procParameters.Add("@UserId", userid);
+            Parameters = procParameters;
 
-
-            storedProcedureName = "dbo.GetAllProducts";
+            StoredProcedureName = "dbo.GetAllProducts";
             return this;
         }
-        private ProcGetAllProducts() { }
     }
 }

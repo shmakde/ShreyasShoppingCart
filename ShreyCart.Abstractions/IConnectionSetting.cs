@@ -1,4 +1,6 @@
-﻿namespace ShreyCart.Abstractions
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+namespace ShreyCart.Abstractions
 {
     public interface IConnectionSetting
     {

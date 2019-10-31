@@ -1,13 +1,14 @@
-﻿using ShreyCart.Abstractions;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
+using ShreyCart.Abstractions;
 
 namespace ShreyCart.DataAccess.StoredProcedures
 {
     public class ProcAddNewProduct : IStoredProcedureNonQuery
     {
-        public string storedProcedureName { get; set; }
-        public Dictionary<string, object> parameters { get; set; }
-
+        private const string ImageHost = @"http://shreyasmakde.com/carts/";
+        private const string JpgType = ".jpg";
         private string title;
         private string color;
         private string suppliername;
@@ -15,35 +16,46 @@ namespace ShreyCart.DataAccess.StoredProcedures
         private string imagename;
         private int userid;
 
-        const string imageHost = @"http://shreyasmakde.com/carts/";
-        const string jpgType = ".jpg";
-        public ProcAddNewProduct WithTitle(string Title)
+        public ProcAddNewProduct(int userid)
         {
-            title = Title;
+            this.userid = userid;
+        }
+
+        private ProcAddNewProduct()
+        {
+        }
+
+        public string StoredProcedureName { get; set; }
+
+        public Dictionary<string, object> Parameters { get; set; }
+
+        public ProcAddNewProduct WithTitle(string title)
+        {
+            this.title = title;
             return this;
         }
 
-        public ProcAddNewProduct WithColor(string Color)
+        public ProcAddNewProduct WithColor(string color)
         {
-            color = Color;
+            this.color = color;
             return this;
         }
 
-        public ProcAddNewProduct WithSupplierName(string SupplierName)
+        public ProcAddNewProduct WithSupplierName(string suppliername)
         {
-            suppliername = SupplierName;
+            this.suppliername = suppliername;
             return this;
         }
 
-        public ProcAddNewProduct WithPrice(decimal Price)
+        public ProcAddNewProduct WithPrice(decimal price)
         {
-            price = Price;
+            this.price = price;
             return this;
         }
 
-        public ProcAddNewProduct WithImageURL(string ImageName)
+        public ProcAddNewProduct WithImageURL(string imagename)
         {
-            imagename = ImageName;
+            this.imagename = imagename;
             return this;
         }
 
@@ -55,20 +67,13 @@ namespace ShreyCart.DataAccess.StoredProcedures
             procParameters.Add("@Color", color);
             procParameters.Add("@SupplierName", suppliername);
             procParameters.Add("@Price", price);
-            procParameters.Add("@ImageURL", imageHost + imagename + jpgType);
+            procParameters.Add("@ImageURL", ImageHost + imagename + JpgType);
             procParameters.Add("@UserId", userid);
 
-            storedProcedureName = "dbo.AddNewProduct";
+            StoredProcedureName = "dbo.AddNewProduct";
 
-            parameters = procParameters;
+            Parameters = procParameters;
             return this;
         }
-        public ProcAddNewProduct(int UserId)
-        {
-            userid = UserId;
-        }
-
-        private ProcAddNewProduct() { }
-
     }
 }

@@ -1,26 +1,31 @@
-﻿using ShreyCart.Abstractions;
-using System;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using ShreyCart.Abstractions;
 
 namespace ShreyCart.DataAccess.StoredProcedures
 {
     public class ProcDeleteProduct : IStoredProcedureNonQuery
     {
-        public string storedProcedureName { get; set; }
-        public Dictionary<string, object> parameters { get; set; }
         private int productId;
         private int usersId;
 
-        public ProcDeleteProduct(int UserId)
+        public ProcDeleteProduct(int userId)
         {
-            usersId = UserId;
+            usersId = userId;
         }
 
-        public ProcDeleteProduct WithProductId(int ProductId)
+        private ProcDeleteProduct()
         {
-            productId = ProductId;
+        }
+
+        public string StoredProcedureName { get; set; }
+
+        public Dictionary<string, object> Parameters { get; set; }
+
+        public ProcDeleteProduct WithProductId(int productId)
+        {
+            this.productId = productId;
             return this;
         }
 
@@ -31,11 +36,10 @@ namespace ShreyCart.DataAccess.StoredProcedures
             procParameters.Add("@ProductId", productId);
             procParameters.Add("@UserId", usersId);
 
-            storedProcedureName = "dbo.DeleteProduct";
-            parameters = procParameters;
+            StoredProcedureName = "dbo.DeleteProduct";
+            Parameters = procParameters;
 
             return this;
         }
-        private ProcDeleteProduct() { }
     }
 }
