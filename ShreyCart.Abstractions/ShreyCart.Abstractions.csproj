@@ -56,6 +56,8 @@
     <Compile Include="IBasketContext.cs" />
     <Compile Include="IConnectionSetting.cs" />
     <Compile Include="IEmberDataWrapper.cs" />
+    <Compile Include="IEmberProductWithTypeId.cs" />
+    <Compile Include="IProduct.cs" />
     <Compile Include="ISqlExecutor.cs" />
     <Compile Include="IStoredProcedureNonQuery.cs" />
     <Compile Include="IProductContext.cs" />
@@ -64,12 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ShreyCart.Domain\ShreyCart.Domain.csproj">
-      <Project>{adaff353-8d72-43f4-8111-ef654128829d}</Project>
-      <Name>ShreyCart.Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\ShreyCartService - Web Deploy.pubxml" />

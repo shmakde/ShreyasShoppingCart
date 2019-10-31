@@ -61,6 +61,12 @@
   <ItemGroup>
     <None Include="Properties\PublishProfiles\ShreyCartService - Web Deploy.pubxml" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShreyCart.Abstractions\ShreyCart.Abstractions.csproj">
+      <Project>{71971dd8-6dad-480e-b59e-99a9db192acd}</Project>
+      <Name>ShreyCart.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

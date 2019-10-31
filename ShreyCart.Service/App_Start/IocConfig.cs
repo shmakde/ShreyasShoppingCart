@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using ShreyCart.Abstractions;
 using ShreyCart.Business;
-using ShreyCart.DataAccess;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
 

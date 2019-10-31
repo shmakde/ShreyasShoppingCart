@@ -4,6 +4,6 @@ namespace ShreyCart.Abstractions
 {
     public interface IEmberDataWrapper
     {
-        //List<EmberProductWithTypeId> data { get; set; }
+        IEnumerable<IEmberProductWithTypeId> data { get; set; }
     }
 }

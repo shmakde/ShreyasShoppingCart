@@ -1,11 +1,9 @@
-﻿using ShreyCart.Domain;
-
-namespace ShreyCart.Abstractions
+﻿namespace ShreyCart.Abstractions
 {
     public interface IProductContext
     {
-        EmberDataWrapper GetAllProducts();
+        IEmberDataWrapper GetAllProducts();
         void AddNewProduct(string title, string color, string supplier, double price, string imageName);
-        void AddNewProduct(Product product);
+        void AddNewProduct(IProduct product);
     }
 }

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using ShreyCart.Abstractions;
+using System.Collections.Generic;
 
 namespace ShreyCart.Domain
 {
-    public class EmberDataWrapper
+    public class EmberDataWrapper : IEmberDataWrapper
     {
-        public List<EmberProductWithTypeId> data { get; set; }
+        public IEnumerable<IEmberProductWithTypeId> data { get; set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace ShreyCart.Domain
+﻿using ShreyCart.Abstractions;
+
+namespace ShreyCart.Domain
 {
-    public class Product
+    public class Product : IProduct
     {
         public string title { get; set; }
         public string color { get; set; }

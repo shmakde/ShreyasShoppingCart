@@ -15,7 +15,7 @@ namespace ShreyCart.Business
         {
             _connectionSetting = connectionSetting;
         }
-        public EmberDataWrapper GetAllProducts()
+        public IEmberDataWrapper GetAllProducts()
         {
             var ProcGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
                 .Build();
@@ -61,7 +61,7 @@ namespace ShreyCart.Business
             new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
         }
 
-        public void AddNewProduct(Product emberProduct)
+        public void AddNewProduct(IProduct emberProduct)
         {
             var ProcAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
                 .WithTitle(emberProduct.title)

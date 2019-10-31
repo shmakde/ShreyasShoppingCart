@@ -1,7 +1,7 @@
 ﻿using ShreyCart.Abstractions;
 using System.Configuration;
 
-namespace ShreyCart.DataAccess
+namespace ShreyCart.Business
 {
     public class ConnectionSetting : IConnectionSetting
     {

@@ -1,10 +1,12 @@
-﻿namespace ShreyCart.Domain
+﻿using ShreyCart.Abstractions;
+
+namespace ShreyCart.Domain
 {
-    public class EmberProductWithTypeId
+    public class EmberProductWithTypeId : IEmberProductWithTypeId
     {
         public string type { get; set; }
         public string id { get; set; }
 
-        public Product attributes { get; set; }
+        public IProduct attributes { get; set; }
     }
 }

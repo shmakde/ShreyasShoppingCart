@@ -1,5 +1,4 @@
-﻿using ShreyCart.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace ShreyCart.Abstractions
 {
@@ -7,6 +6,6 @@ namespace ShreyCart.Abstractions
     {
         void AddProductToCart(string cartName, int productId, int quantity);
         void Checkout(string cartName);
-        List<Product> GetCart(string cartName);
+        IEnumerable<IProduct> GetCart(string cartName);
     }
 }

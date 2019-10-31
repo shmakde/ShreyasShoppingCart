@@ -1,6 +1,5 @@
 ﻿using ShreyCart.Abstractions;
 using System.Collections.Generic;
-using System.Data;
 
 namespace ShreyCart.DataAccess.StoredProcedures
 {
@@ -13,11 +12,6 @@ namespace ShreyCart.DataAccess.StoredProcedures
             userId = UserId;
         }
         public Dictionary<string, object> parameters { get; set; }
-
-        public DataSet Results()
-        {
-            return new SqlExecutor().ExecuteStoredProcedure(this, new ConnectionSetting());
-        }
 
         public ProcGetAllProducts Build()
         {

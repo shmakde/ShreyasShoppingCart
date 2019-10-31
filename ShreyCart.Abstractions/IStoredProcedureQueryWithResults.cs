@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 
 namespace ShreyCart.Abstractions
 {
@@ -7,6 +6,5 @@ namespace ShreyCart.Abstractions
     {
         string storedProcedureName { get; set; }
         Dictionary<string, object> parameters { get; set; }
-        DataSet Results();
     }
 }

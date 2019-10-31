@@ -17,7 +17,7 @@ namespace ShreyCart.Service.Controllers
         [HttpGet]
         public EmberDataWrapper GetAllProducts()
         {
-            return _productContext.GetAllProducts();
+            return (EmberDataWrapper)_productContext.GetAllProducts();
         }
 
         [Route("api/addproduct/{title}/{color}/{supplier}/{price}/{imageName}")]
