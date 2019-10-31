@@ -19,7 +19,8 @@ namespace ShreyCart.Service.Controllers
         [HttpGet]
         public EmberDataWrapper GetAllProducts()
         {
-            return (EmberDataWrapper)productContext.GetAllProducts();
+            var existingProducts = productContext.GetAllExistingProducts();
+            return (EmberDataWrapper)existingProducts;
         }
 
         [Route("api/addproduct/{title}/{color}/{supplier}/{price}/{imageName}")]

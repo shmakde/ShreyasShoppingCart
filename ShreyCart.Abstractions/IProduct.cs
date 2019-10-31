@@ -12,7 +12,7 @@ namespace ShreyCart.Abstractions
 
         string pricecategory { get; set; }
 
-        decimal price { get; set; }
+        double price { get; set; }
 
         string image { get; set; }
 

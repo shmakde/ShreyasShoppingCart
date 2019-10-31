@@ -14,7 +14,7 @@ namespace ShreyCart.Domain
 
         public string pricecategory { get; set; }
 
-        public decimal price { get; set; }
+        public double price { get; set; }
 
         public string image { get; set; }
 

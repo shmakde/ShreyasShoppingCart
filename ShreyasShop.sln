@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.DataAccess", "Shr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.DataAccess.Tests", "ShreyCart.DataAccess.Tests\ShreyCart.DataAccess.Tests.csproj", "{9E20278A-5987-49A3-AA08-F37D9AFAD792}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShreyCart.Business.Tests", "ShreyCart.Business.Tests\ShreyCart.Business.Tests.csproj", "{A4B71FB7-6D4A-4DAA-B5BC-1369659994F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E20278A-5987-49A3-AA08-F37D9AFAD792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B71FB7-6D4A-4DAA-B5BC-1369659994F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B71FB7-6D4A-4DAA-B5BC-1369659994F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B71FB7-6D4A-4DAA-B5BC-1369659994F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B71FB7-6D4A-4DAA-B5BC-1369659994F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

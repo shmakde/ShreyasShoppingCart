@@ -1,6 +1,5 @@
 ﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
 
-using System.Collections.Generic;
 using System.Data;
 using ShreyCart.Abstractions;
 using ShreyCart.DataAccess;
@@ -13,78 +12,45 @@ namespace ShreyCart.Business
     {
         private const int CurrentSessionUserId = 1;
         private readonly IConnectionSetting connectionSetting;
+        private readonly IProductContextHelper productContextHelper;
 
-        public ProductContext(IConnectionSetting connectionSetting)
+        public ProductContext(IConnectionSetting connectionSetting, IProductContextHelper productContextHelper)
         {
             this.connectionSetting = connectionSetting;
+            this.productContextHelper = productContextHelper;
         }
 
-        public IEmberDataWrapper GetAllProducts()
+        public IEmberDataWrapper GetAllExistingProducts()
         {
-            var procGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
-                .Build();
+            var procGetProducts = productContextHelper.BuildGetAllProductsStoredProcedure(CurrentSessionUserId);
+            var dataSet = productContextHelper.GetSqlDataSet(procGetProducts, connectionSetting);
+            var processedData = productContextHelper.ProcessDataSetForEmber(dataSet);
 
-            var dataSet = new SqlExecutor().ExecuteStoredProcedure(procGetProducts, connectionSetting);
-
-            return new EmberDataWrapper { data = ProcessDataSetForEmber(dataSet) };
-        }
-
-        public List<EmberProductWithTypeId> ProcessDataSetForEmber(DataSet dataSet)
-        {
-            var emberProductsWithTypeId = new List<EmberProductWithTypeId>();
-            foreach (DataRow row in dataSet.Tables[0].Rows)
-            {
-                emberProductsWithTypeId.Add(new EmberProductWithTypeId()
-                {
-                    id = row["title"].ToString().Replace(' ', '-'),
-                    type = "product",
-                    attributes = new Product()
-                    {
-                        title = row["title"].ToString(),
-                        color = row["color"].ToString(),
-                        supplier = row["suppliername"].ToString(),
-                        pricecategory = row["pricecategory"].ToString(),
-                        price = decimal.Parse(row["price"].ToString()),
-                        image = row["imageurl"].ToString(),
-                        description = row["description"].ToString(),
-                    },
-                });
-            }
-
-            return emberProductsWithTypeId;
+            return new EmberDataWrapper { data = processedData };
         }
 
         public void AddNewProduct(string title, string color, string suppliername, double price, string imageName)
         {
-            var procAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
-                .WithTitle(title)
-                .WithColor(color)
-                .WithSupplierName(suppliername)
-                .WithImageURL(imageName)
-                .Build();
-
-            new SqlExecutor().ExecuteStoredProcedure(procAddNewPerson, connectionSetting);
+            var procAddNewProduct = productContextHelper.BuildGetAddNewProducts(
+                CurrentSessionUserId,
+                title,
+                color,
+                suppliername,
+                price,
+                imageName);
+            productContextHelper.PostSqlNonQuery(procAddNewProduct, connectionSetting);
         }
 
-        public void AddNewProduct(IProduct emberProduct)
+        public void AddNewProduct(IProduct product)
         {
-            var procAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
-                .WithTitle(emberProduct.title)
-                .WithColor(emberProduct.color)
-                .WithSupplierName(emberProduct.supplier)
-                .WithImageURL(emberProduct.image)
-                .Build();
-
-            new SqlExecutor().ExecuteStoredProcedure(procAddNewPerson, connectionSetting);
-        }
-
-        public void DeleteProduct(int productId)
-        {
-            var procAddNewPerson = new ProcDeleteProduct(CurrentSessionUserId)
-                .WithProductId(productId)
-                .Build();
-
-            new SqlExecutor().ExecuteStoredProcedure(procAddNewPerson, connectionSetting);
+            var procAddNewProduct = productContextHelper.BuildGetAddNewProducts(
+                CurrentSessionUserId,
+                product.title,
+                product.color,
+                product.supplier,
+                product.price,
+                product.image);
+            productContextHelper.PostSqlNonQuery(procAddNewProduct, connectionSetting);
         }
     }
 }

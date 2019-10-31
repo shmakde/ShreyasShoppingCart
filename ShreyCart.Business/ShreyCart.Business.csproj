@@ -57,9 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasketContext.cs" />
     <Compile Include="ConnectionSetting.cs" />
     <Compile Include="ProductContext.cs" />
+    <Compile Include="ProductContextHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
