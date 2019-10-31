@@ -6,9 +6,9 @@ namespace ShreyCart.DataAccess
 {
     public class SqlExecutor : ISqlExecutor
     {
-        public void ExecuteNonQuery(string queryString, IConnectionSetting connection)
+        public void ExecuteNonQuery(string queryString, IConnectionSetting connectionSetting)
         {
-            using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
+            using (SqlConnection con = new SqlConnection(connectionSetting.GetDataSourcePath()))
             {
                 SqlCommand command = new SqlCommand(queryString, con);
                 command.Connection.Open();
@@ -16,36 +16,41 @@ namespace ShreyCart.DataAccess
             }
         }
 
-        public void ExecuteStoredProcedure(IStoredProcedureNonQuery procedure, IConnectionSetting connection)
+        public void ExecuteStoredProcedure(IStoredProcedureNonQuery procedure, IConnectionSetting connectionSetting)
         {
-            using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
+            using (SqlConnection connection = new SqlConnection(connectionSetting.GetDataSourcePath()))
             {
-                using (SqlCommand cmd = new SqlCommand(procedure.storedProcedureName, con))
+                using (SqlCommand command = new SqlCommand(procedure.storedProcedureName, connection))
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    command.CommandType = CommandType.StoredProcedure;
 
                     foreach(var parameter in procedure.parameters)
                     {
-                        cmd.Parameters.AddWithValue(parameter.Key, parameter.Value);
+                        command.Parameters.AddWithValue(parameter.Key, parameter.Value);
                     }
-                    con.Open();
-                    cmd.ExecuteNonQuery();
+                    connection.Open();
+                    command.ExecuteNonQuery();
                 }
             }
         }
 
-        public DataSet ExecuteStoredProcedure(IStoredProcedureQueryWithResults procedure, IConnectionSetting connection)
+        public DataSet ExecuteStoredProcedure(IStoredProcedureQueryWithResults procedure, IConnectionSetting connectionSetting)
         {
-            using (SqlConnection con = new SqlConnection(connection.GetDataSourcePath()))
+            DataSet dataset = new DataSet();
+            using (SqlConnection con = new SqlConnection(connectionSetting.GetDataSourcePath()))
             {
-                SqlDataAdapter adapter = new SqlDataAdapter();
-                using (SqlCommand cmd = new SqlCommand(procedure.storedProcedureName, con))
+                SqlCommand command = new SqlCommand(procedure.storedProcedureName, con);
+                foreach (var parameter in procedure.parameters)
                 {
-                    var dataset = new DataSet();
-                    adapter.SelectCommand = cmd;
-                    adapter.Fill(dataset);
-                    return dataset;
+                    command.Parameters.AddWithValue(parameter.Key, parameter.Value);
                 }
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter da = new SqlDataAdapter();
+                da.SelectCommand = command;
+
+                da.Fill(dataset);
+                return dataset;
             }
         }
     }

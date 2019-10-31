@@ -22,11 +22,11 @@ namespace ShreyCart.DataAccess.StoredProcedures
         public ProcGetAllProducts Build()
         {
             var procParameters = new Dictionary<string, object>();
-
             procParameters.Add("@UserId", userId);
+            parameters = procParameters;
+
 
             storedProcedureName = "dbo.GetAllProducts";
-            parameters = procParameters;
             return this;
         }
         private ProcGetAllProducts() { }

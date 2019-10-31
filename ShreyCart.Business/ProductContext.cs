@@ -11,17 +11,13 @@ namespace ShreyCart.Business
     {
         private static IEnumerable<Product> _products;
 
-        private IEnumerable<Product> Products
-            => _products ?? (_products = _dataSource.LoadProducts(_config.GetDataSourcePath()));
-
         private readonly IDataSource _dataSource;
-
+        private readonly IConnectionSetting _connectionSetting;
         private readonly IConfig _config;
         const int CurrentSessionUserId = 1;
-        public ProductContext(IDataSource dataSource, IConfig config)
+        public ProductContext(IConnectionSetting connectionSetting)
         {
-            _dataSource = dataSource;
-            _config = config;
+            _connectionSetting = connectionSetting;
         }
 
         public EmberDataWrapper GetAllProducts()
@@ -29,7 +25,7 @@ namespace ShreyCart.Business
             var ProcGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
                 .Build();
 
-            var dataSet = new SqlExecutor().ExecuteStoredProcedure(ProcGetProducts, new ConnectionSetting());
+            var dataSet = new SqlExecutor().ExecuteStoredProcedure(ProcGetProducts, _connectionSetting);
 
             return new EmberDataWrapper { data = ProcessDataSetForEmber(dataSet) };
         }
@@ -71,7 +67,7 @@ namespace ShreyCart.Business
                 .WithImageURL(imageName)
                 .Build();
 
-            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, new ConnectionSetting());
+            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
         }
 
         public void AddNewProduct(EmberProduct emberProduct)
@@ -83,7 +79,7 @@ namespace ShreyCart.Business
                 .WithImageURL(emberProduct.image)
                 .Build();
 
-            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, new ConnectionSetting());
+            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
         }
 
         public void DeleteProduct(int ProductId)
@@ -92,7 +88,7 @@ namespace ShreyCart.Business
                 .WithProductId(ProductId)
                 .Build();
 
-            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, new ConnectionSetting());
+            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
         }
     }
 }

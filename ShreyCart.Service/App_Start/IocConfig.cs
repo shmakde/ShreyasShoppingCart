@@ -18,10 +18,9 @@ namespace ShreyCart.Service
 
             // Register your types, for instance using the scoped lifestyle:
             container.Register<IDataSource, CsvDataSource>(Lifestyle.Scoped);
-            container.Register<IConfig, CartConfig>(Lifestyle.Scoped);
+            container.Register<IConnectionSetting, ConnectionSetting>(Lifestyle.Scoped);
             container.Register<IProductContext, ProductContext>(Lifestyle.Scoped);
             container.Register<IBasketContext, BasketContext>(Lifestyle.Scoped);
-            container.Register<IConnectionSetting, ConnectionSetting>(Lifestyle.Scoped);
 
             // This is an extension method from the integration package.
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
