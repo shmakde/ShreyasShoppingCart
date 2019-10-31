@@ -11,14 +11,14 @@ namespace ShreyCart.Business
 {
     public class ProductContextHelper : IProductContextHelper
     {
-        public IStoredProcedureNonQuery BuildDeleteProduct(int currentSessionUserId, int productId)
+        public IStoredProcedureNonQuery Build_DeleteProduct_StoredProcedure(int currentSessionUserId, int productId)
         {
             return new ProcDeleteProduct(currentSessionUserId)
                 .WithProductId(productId)
                 .Build();
         }
 
-        public IStoredProcedureNonQuery BuildGetAddNewProducts(int currentSessionUserId, string title, string color, string suppliername, double price, string imageName)
+        public IStoredProcedureNonQuery Build_AddNewProducts_StoredProcedure(int currentSessionUserId, string title, string color, string suppliername, double price, string imageName)
         {
             return new ProcAddNewProduct(currentSessionUserId)
                 .WithTitle(title)
@@ -28,7 +28,7 @@ namespace ShreyCart.Business
                 .Build();
         }
 
-        public IStoredProcedureQueryWithResults BuildGetAllProductsStoredProcedure(int currentSessionUserId)
+        public IStoredProcedureQueryWithResults Build_GetAllProducts_StoredProcedure(int currentSessionUserId)
         {
             return new ProcGetAllProducts(currentSessionUserId)
                 .Build();

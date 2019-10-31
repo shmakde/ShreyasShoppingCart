@@ -22,7 +22,7 @@ namespace ShreyCart.Business
 
         public IEmberDataWrapper GetAllExistingProducts()
         {
-            var procGetProducts = productContextHelper.BuildGetAllProductsStoredProcedure(CurrentSessionUserId);
+            var procGetProducts = productContextHelper.Build_GetAllProducts_StoredProcedure(CurrentSessionUserId);
             var dataSet = productContextHelper.GetSqlDataSet(procGetProducts, connectionSetting);
             var processedData = productContextHelper.ProcessDataSetForEmber(dataSet);
 
@@ -31,7 +31,7 @@ namespace ShreyCart.Business
 
         public void AddNewProduct(string title, string color, string suppliername, double price, string imageName)
         {
-            var procAddNewProduct = productContextHelper.BuildGetAddNewProducts(
+            var procAddNewProduct = productContextHelper.Build_AddNewProducts_StoredProcedure(
                 CurrentSessionUserId,
                 title,
                 color,
@@ -43,7 +43,7 @@ namespace ShreyCart.Business
 
         public void AddNewProduct(IProduct product)
         {
-            var procAddNewProduct = productContextHelper.BuildGetAddNewProducts(
+            var procAddNewProduct = productContextHelper.Build_AddNewProducts_StoredProcedure(
                 CurrentSessionUserId,
                 product.title,
                 product.color,
@@ -51,6 +51,14 @@ namespace ShreyCart.Business
                 product.price,
                 product.image);
             productContextHelper.PostSqlNonQuery(procAddNewProduct, connectionSetting);
+        }
+
+        public void DeleteProduct(int productId)
+        {
+            var procDeleteProduct = productContextHelper.Build_DeleteProduct_StoredProcedure(
+                CurrentSessionUserId,
+                productId);
+            productContextHelper.PostSqlNonQuery(procDeleteProduct, connectionSetting);
         }
     }
 }

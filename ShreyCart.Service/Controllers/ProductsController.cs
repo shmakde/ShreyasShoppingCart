@@ -38,5 +38,13 @@ namespace ShreyCart.Service.Controllers
             productContext.AddNewProduct(product);
             return Ok("Product Added Successfully");
         }
+
+        [Route("api/delete/{productId}")]
+        [HttpDelete]
+        public IHttpActionResult DeleteProduct(int productId)
+        {
+            productContext.DeleteProduct(productId);
+            return Ok("Product Added Successfully");
+        }
     }
 }

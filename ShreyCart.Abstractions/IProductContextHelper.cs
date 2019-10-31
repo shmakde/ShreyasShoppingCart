@@ -7,11 +7,11 @@ namespace ShreyCart.Abstractions
 {
     public interface IProductContextHelper
     {
-        IStoredProcedureQueryWithResults BuildGetAllProductsStoredProcedure(int currentSessionUserId);
+        IStoredProcedureQueryWithResults Build_GetAllProducts_StoredProcedure(int currentSessionUserId);
 
-        IStoredProcedureNonQuery BuildGetAddNewProducts(int currentSessionUserId, string title, string color, string suppliername, double price, string imageName);
+        IStoredProcedureNonQuery Build_AddNewProducts_StoredProcedure(int currentSessionUserId, string title, string color, string suppliername, double price, string imageName);
 
-        IStoredProcedureNonQuery BuildDeleteProduct(int currentSessionUserId, int productId);
+        IStoredProcedureNonQuery Build_DeleteProduct_StoredProcedure(int currentSessionUserId, int productId);
 
         DataSet GetSqlDataSet(IStoredProcedureQueryWithResults storedProcedure, IConnectionSetting connectionSetting);
 

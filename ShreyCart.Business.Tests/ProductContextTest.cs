@@ -26,7 +26,7 @@ namespace ShreyCart.Business.Tests
         public void ShouldProcessDataSetForEmber()
         {
             // Arrange
-            mockProductContextHelper.Setup(x => x.BuildGetAllProductsStoredProcedure(It.IsAny<int>()));
+            mockProductContextHelper.Setup(x => x.Build_GetAllProducts_StoredProcedure(It.IsAny<int>()));
             mockProductContextHelper.Setup(x => x.GetSqlDataSet(It.IsAny<IStoredProcedureQueryWithResults>(), It.IsAny<IConnectionSetting>()));
 
             // Act

@@ -12,5 +12,7 @@ namespace ShreyCart.Abstractions
         void AddNewProduct(string title, string color, string supplier, double price, string imageName);
 
         void AddNewProduct(IProduct product);
+
+        void DeleteProduct(int productId);
     }
 }
