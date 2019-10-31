@@ -1,5 +1,6 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following

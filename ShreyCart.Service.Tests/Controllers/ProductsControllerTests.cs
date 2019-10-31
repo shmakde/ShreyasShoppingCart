@@ -1,4 +1,6 @@
-﻿using FizzWare.NBuilder;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using FizzWare.NBuilder;
 using FluentAssertions;
 using Moq;
 using NUnit.Framework;
@@ -11,21 +13,20 @@ namespace ShreyCart.Service.Test.Controllers
     [TestFixture]
     public class ProductsControllerTests
     {
-        private ProductsController _productsController;
+        private ProductsController productsController;
 
-        private Mock<IProductContext> _mockProductContext;
+        private Mock<IProductContext> mockProductContext;
 
         [OneTimeSetUp]
         public void SetupMocks()
         {
-            _mockProductContext = new Mock<IProductContext>();
-            _productsController = new ProductsController(_mockProductContext.Object);
+            mockProductContext = new Mock<IProductContext>();
+            productsController = new ProductsController(mockProductContext.Object);
         }
 
         [Test]
         public void Get_CanReturn_Products()
         {
-            
         }
     }
 }

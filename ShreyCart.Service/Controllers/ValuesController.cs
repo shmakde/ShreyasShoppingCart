@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using System.Collections.Generic;
 using System.Web.Http;
 
 namespace ShreyCart.Service.Controllers

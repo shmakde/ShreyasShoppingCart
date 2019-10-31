@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using NUnit.Framework;
 
 namespace ShreyCart.Service.Test.Controllers
 {
@@ -30,4 +32,3 @@ namespace ShreyCart.Service.Test.Controllers
         }
     }
 }
-

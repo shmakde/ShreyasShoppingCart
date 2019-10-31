@@ -1,19 +1,28 @@
-﻿using ShreyCart.Abstractions;
-using ShreyCart.Domain;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
+using ShreyCart.Abstractions;
+using ShreyCart.Domain;
 
 namespace ShreyCart.Business
 {
     public class BasketContext : IBasketContext
     {
-        private static Dictionary<string, List<Product>> _baskets;
-        private Dictionary<string, List<Product>> Baskets
-            => _baskets ?? (_baskets = new Dictionary<string, List<Product>>());
+        private static Dictionary<string, List<Product>> baskets;
 
-        private readonly IProductContext _productContext;
+        private readonly IProductContext productContext;
+
         public BasketContext(IProductContext productContext)
         {
-            _productContext = productContext;
+            this.productContext = productContext;
+        }
+
+        private Dictionary<string, List<Product>> Baskets
+            => baskets ?? (baskets = new Dictionary<string, List<Product>>());
+
+        public IProductContext GetProductContext()
+        {
+            return productContext;
         }
 
         public void AddProductToCart(string cartName, int productId, int quantity)
@@ -25,7 +34,6 @@ namespace ShreyCart.Business
         {
             throw new System.NotImplementedException();
         }
-
 
         private bool CanCheckout(List<Product> shoppingBasket)
         {
@@ -43,16 +51,6 @@ namespace ShreyCart.Business
         }
 
         private Product CreateCartProduct(Product product, int quantity)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<Product> GetCart(string cartName)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IEnumerable<IProduct> IBasketContext.GetCart(string cartName)
         {
             throw new System.NotImplementedException();
         }

@@ -1,6 +1,4 @@
-// Uncomment the following to provide samples for PageResult<T>. Must also add the Microsoft.AspNet.WebApi.OData
-// package to your project.
-////#define Handle_PageResultOfT
+// Copyright © Shreyas Makde 2020. All Rights Reserved.
 
 using System;
 using System.Collections;
@@ -26,15 +24,20 @@ namespace ShreyCart.Service.Areas.HelpPage
     public static class HelpPageConfig
     {
         [SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters",
+#pragma warning disable SA1117 // Parameters should be on same line or separate lines
             MessageId = "ShreyCart.Service.Areas.HelpPage.TextSample.#ctor(System.String)",
+#pragma warning restore SA1117 // Parameters should be on same line or separate lines
             Justification = "End users may choose to merge this string with existing localized resources.")]
         [SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly",
+#pragma warning disable SA1117 // Parameters should be on same line or separate lines
             MessageId = "bsonspec",
+#pragma warning restore SA1117 // Parameters should be on same line or separate lines
             Justification = "Part of a URI.")]
         public static void Register(HttpConfiguration config)
         {
             //// Uncomment the following to use the documentation from XML documentation file.
-            //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
+#pragma warning disable SA1005 // Single line comments should begin with single space
+                              //config.SetDocumentationProvider(new XmlDocumentationProvider(HttpContext.Current.Server.MapPath("~/App_Data/XmlDocument.xml")));
 
             //// Uncomment the following to use "sample string" as the sample for all actions that have string as the body parameter or return type.
             //// Also, the string arrays will be used for IEnumerable<string>. The sample objects will be serialized into different media type 
@@ -56,15 +59,18 @@ namespace ShreyCart.Service.Areas.HelpPage
             // type, regardless of the body parameter or return type. The lines below avoid display of binary content.
             // The BsonMediaTypeFormatter (if available) is not used to serialize the TextSample object.
             config.SetSampleForMediaType(
+#pragma warning restore SA1005 // Single line comments should begin with single space
                 new TextSample("Binary JSON content. See http://bsonspec.org for details."),
                 new MediaTypeHeaderValue("application/bson"));
 
             //// Uncomment the following to use "[0]=foo&[1]=bar" directly as the sample for all actions that support form URL encoded format
             //// and have IEnumerable<string> as the body parameter or return type.
-            //config.SetSampleForType("[0]=foo&[1]=bar", new MediaTypeHeaderValue("application/x-www-form-urlencoded"), typeof(IEnumerable<string>));
+#pragma warning disable SA1005 // Single line comments should begin with single space
+                              //config.SetSampleForType("[0]=foo&[1]=bar", new MediaTypeHeaderValue("application/x-www-form-urlencoded"), typeof(IEnumerable<string>));
 
             //// Uncomment the following to use "1234" directly as the request sample for media type "text/plain" on the controller named "Values"
             //// and action named "Put".
+#pragma warning disable SA1005 // Single line comments should begin with single space
             //config.SetSampleRequest("1234", new MediaTypeHeaderValue("text/plain"), "Values", "Put");
 
             //// Uncomment the following to use the image on "../images/aspNetHome.png" directly as the response sample for media type "image/png"
@@ -79,6 +85,8 @@ namespace ShreyCart.Service.Areas.HelpPage
             //// The sample will be generated as if the controller named "Values" and action named "Post" were returning a string.
             //config.SetActualResponseType(typeof(string), "Values", "Post");
         }
+#pragma warning restore SA1005 // Single line comments should begin with single space
+#pragma warning restore SA1005 // Single line comments should begin with single space
 
 #if Handle_PageResultOfT
         private static object GeneratePageResult(HelpPageSampleGenerator sampleGenerator, Type type)

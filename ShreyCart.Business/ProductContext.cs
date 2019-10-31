@@ -1,26 +1,30 @@
-﻿using ShreyCart.Abstractions;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using System.Collections.Generic;
+using System.Data;
+using ShreyCart.Abstractions;
 using ShreyCart.DataAccess;
 using ShreyCart.DataAccess.StoredProcedures;
 using ShreyCart.Domain;
-using System.Collections.Generic;
-using System.Data;
 
 namespace ShreyCart.Business
 {
     public class ProductContext : IProductContext
     {
-        private readonly IConnectionSetting _connectionSetting;
-        const int CurrentSessionUserId = 1;
+        private const int CurrentSessionUserId = 1;
+        private readonly IConnectionSetting connectionSetting;
+
         public ProductContext(IConnectionSetting connectionSetting)
         {
-            _connectionSetting = connectionSetting;
+            this.connectionSetting = connectionSetting;
         }
+
         public IEmberDataWrapper GetAllProducts()
         {
-            var ProcGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
+            var procGetProducts = new ProcGetAllProducts(CurrentSessionUserId)
                 .Build();
 
-            var dataSet = new SqlExecutor().ExecuteStoredProcedure(ProcGetProducts, _connectionSetting);
+            var dataSet = new SqlExecutor().ExecuteStoredProcedure(procGetProducts, connectionSetting);
 
             return new EmberDataWrapper { data = ProcessDataSetForEmber(dataSet) };
         }
@@ -42,44 +46,45 @@ namespace ShreyCart.Business
                         pricecategory = row["pricecategory"].ToString(),
                         price = decimal.Parse(row["price"].ToString()),
                         image = row["imageurl"].ToString(),
-                        description = row["description"].ToString()
-                    }
+                        description = row["description"].ToString(),
+                    },
                 });
             }
+
             return emberProductsWithTypeId;
         }
-        
+
         public void AddNewProduct(string title, string color, string suppliername, double price, string imageName)
         {
-            var ProcAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
+            var procAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
                 .WithTitle(title)
                 .WithColor(color)
                 .WithSupplierName(suppliername)
                 .WithImageURL(imageName)
                 .Build();
 
-            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
+            new SqlExecutor().ExecuteStoredProcedure(procAddNewPerson, connectionSetting);
         }
 
         public void AddNewProduct(IProduct emberProduct)
         {
-            var ProcAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
+            var procAddNewPerson = new ProcAddNewProduct(CurrentSessionUserId)
                 .WithTitle(emberProduct.title)
                 .WithColor(emberProduct.color)
                 .WithSupplierName(emberProduct.supplier)
                 .WithImageURL(emberProduct.image)
                 .Build();
 
-            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
+            new SqlExecutor().ExecuteStoredProcedure(procAddNewPerson, connectionSetting);
         }
 
-        public void DeleteProduct(int ProductId)
+        public void DeleteProduct(int productId)
         {
-            var ProcAddNewPerson = new ProcDeleteProduct(CurrentSessionUserId)
-                .WithProductId(ProductId)
+            var procAddNewPerson = new ProcDeleteProduct(CurrentSessionUserId)
+                .WithProductId(productId)
                 .Build();
 
-            new SqlExecutor().ExecuteStoredProcedure(ProcAddNewPerson, _connectionSetting);
+            new SqlExecutor().ExecuteStoredProcedure(procAddNewPerson, connectionSetting);
         }
     }
 }

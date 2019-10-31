@@ -1,3 +1,5 @@
+// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +21,7 @@ namespace ShreyCart.Service.Areas.HelpPage.ModelDescriptions
     public class ModelDescriptionGenerator
     {
         // Modify this to support more data annotation attributes.
-        private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
+        private readonly IDictionary<Type, Func<object, string>> annotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
             { typeof(RequiredAttribute), a => "Required" },
             { typeof(RangeAttribute), a =>
@@ -272,7 +274,7 @@ namespace ShreyCart.Service.Areas.HelpPage.ModelDescriptions
             foreach (Attribute attribute in attributes)
             {
                 Func<object, string> textGenerator;
-                if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
+                if (annotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
                 {
                     annotations.Add(
                         new ParameterAnnotation

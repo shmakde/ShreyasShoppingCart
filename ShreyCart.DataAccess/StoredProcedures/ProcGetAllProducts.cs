@@ -11,7 +11,7 @@ namespace ShreyCart.DataAccess.StoredProcedures
 
         public ProcGetAllProducts(int userid)
         {
-            userid = this.userid;
+            this.userid = userid;
         }
 
         private ProcGetAllProducts()

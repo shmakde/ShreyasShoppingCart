@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using System.Collections.Generic;
 using System.Web.Http;
 using ShreyCart.Abstractions;
 using ShreyCart.Domain;
@@ -7,11 +9,11 @@ namespace ShreyCart.Service.Controllers
 {
     public class BasketController : ApiController
     {
-        private readonly IBasketContext _basketContext;
+        private readonly IBasketContext basketContext;
 
         public BasketController(IBasketContext basketContext)
         {
-            _basketContext = basketContext;
+            this.basketContext = basketContext;
         }
 
         [Route("api/ShreyBasket/{cartname}")]

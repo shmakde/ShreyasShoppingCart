@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
+using System.Web.Http;
 using ShreyCart.Abstractions;
 using ShreyCart.Business;
 using SimpleInjector;

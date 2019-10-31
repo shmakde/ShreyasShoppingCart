@@ -1,3 +1,5 @@
+// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -47,7 +49,7 @@ namespace ShreyCart.Service.Areas.HelpPage.Controllers
 
         public ActionResult ResourceModel(string modelName)
         {
-            if (!String.IsNullOrEmpty(modelName))
+            if (!string.IsNullOrEmpty(modelName))
             {
                 ModelDescriptionGenerator modelDescriptionGenerator = Configuration.GetModelDescriptionGenerator();
                 ModelDescription modelDescription;

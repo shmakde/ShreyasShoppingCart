@@ -1,11 +1,8 @@
-﻿using System;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ShreyCart.Service;
 using ShreyCart.Service.Controllers;
 
 namespace ShreyCart.Service.Tests.Controllers

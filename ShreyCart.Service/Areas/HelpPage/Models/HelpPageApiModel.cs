@@ -1,3 +1,5 @@
+// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http.Headers;
@@ -27,10 +29,12 @@ namespace ShreyCart.Service.Areas.HelpPage.Models
         /// </summary>
         public ApiDescription ApiDescription { get; set; }
 
-        /// <summary>
-        /// Gets or sets the <see cref="ParameterDescription"/> collection that describes the URI parameters for the API.
-        /// </summary>
+#pragma warning disable SA1624 // Property summary documentation should omit accessor with restricted access
+                              /// <summary>
+                              /// Gets or sets the <see cref="ParameterDescription"/> collection that describes the URI parameters for the API.
+                              /// </summary>
         public Collection<ParameterDescription> UriParameters { get; private set; }
+#pragma warning restore SA1624 // Property summary documentation should omit accessor with restricted access
 
         /// <summary>
         /// Gets or sets the documentation for the request.

@@ -1,5 +1,7 @@
-﻿using ShreyCart.Abstractions;
+﻿// Copyright © Shreyas Makde 2020. All Rights Reserved.
+
 using System.Collections.Generic;
+using ShreyCart.Abstractions;
 
 namespace ShreyCart.Domain
 {
